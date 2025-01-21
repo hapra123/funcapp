@@ -135,4 +135,4 @@ def index():
                            first_3_result=first_3_result)
 
 if __name__ == "__main__":
-    flask_app.run()
+    flask_app.run(host="0.0.0.0", port=8000)
