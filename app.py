@@ -4,6 +4,8 @@ from azure.storage.blob import BlobServiceClient
 import os as os
 import time
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 # Azure Blob Storage connection string
 connection_string =os.getenv("DATABASE_CONNECTION_STRING")
