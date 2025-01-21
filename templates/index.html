@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Entity Extraction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eef2f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            color: #0056b3;
+            margin-top: 20px;
+            text-align: center;
+        }
+        h3 {
+            color: #333;
+        }
+        .container {
+            margin-top: 30px;
+            padding: 20px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .card-header {
+            background-color: #007BFF;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .btn-primary {
+            background-color: #0056b3;
+            border-color: #0056b3;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #003d80;
+            border-color: #003d80;
+        }
+        .form-control {
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .success-message {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .error-message {
+            color: #ff4d4d;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .result-section {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+        }
+        @media (max-width: 768px) {
+            .btn-primary {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Medical Entity Extraction</h1>
+        <h2>[Connected to Hardik's Azure Env]</h2>
+
+        <div class="row">
+            <!-- Upload Section -->
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-header">Upload a Text File</div>
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input type="file" name="file" class="form-control-file" required>
+                            </div>
+                            <button type="submit" name="upload" class="btn btn-primary">Upload to Azure Blob</button>
+                        </form>
+                        <div class="result-section">
+                            <p class="success-message">{{ upload_result }}</p>
+                            <textarea class="form-control" rows="10" readonly>{{ upload_content }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Query Database Section -->
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-header">Query Database</div>
+                    <div class="card-body">
+                        <form method="POST">
+                            <button type="submit" name="query_latest_row" class="btn btn-primary">Show Updated Time Stamp</button>
+                        </form>
+                        <div class="result-section">
+                            <p class="success-message">{{ latest_updated_time if latest_updated_time else '' }}</p>
+                        </div>
+
+                        <form method="POST">
+                            <button type="submit" name="get_count" class="btn btn-primary">Get Record Count</button>
+                        </form>
+                        <div class="result-section">
+                            <p class="success-message">{{ total_record_count if total_record_count else '' }}</p>
+                        </div>
+
+                        <form method="POST">
+                            <button type="submit" name="first_3_rows" class="btn btn-primary">Show the Latest Row</button>
+                        </form>
+                        <div class="result-section">
+                            <p class="success-message">{{ first_3_result if first_3_result else '' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Messages -->
+        <div class="error-message">
+            <p>{{ error_message if error_message else '' }}</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
