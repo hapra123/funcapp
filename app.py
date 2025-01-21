@@ -1,20 +1,20 @@
 import gradio as gr
 import pymssql
 from azure.storage.blob import BlobServiceClient
-import os
+import os as os
 import time
 from datetime import datetime
 
 # Azure Blob Storage connection string
-connection_string = "DefaultEndpointsProtocol=https;AccountName=patientai;AccountKey=YAHC/XVXdvMfdwqkQqXQJpx5QUK2Ae0sfz5zmjOy338AxphHcjZFveDmk0taaS12YaIgJLQxrjAf+AStkD6u1A==;EndpointSuffix=core.windows.net"
+connection_string =os.getenv("DATABASE_CONNECTION_STRING")
+
 container_name = "conversations"
 
-# Database connection
 conn = pymssql.connect(
-    server="patientserv.database.windows.net",
-    database="PatientEntityDB",
-    user="hardik",
-    password="root@123"
+    server=os.getenv("SERVER"),        # Correct usage of os.getenv
+    database=os.getenv("DATABASE"),
+    user=os.getenv("USER"),
+    password=os.getenv("PASSWORD")
 )
 
 # Function to simulate writing to database with a countdown timer
