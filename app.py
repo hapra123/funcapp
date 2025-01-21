@@ -135,4 +135,4 @@ def index():
                            first_3_result=first_3_result)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    flask_app.run(debug=True)
