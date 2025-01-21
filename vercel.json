@@ -11,13 +11,6 @@
         "src": "/(.*)",
         "dest": "app.py"
       }
-    ],
-    "env": {
-      "DATABASE_CONNECTION_STRING": "@database_connection_string",
-      "SERVER": "@server",
-      "DATABASE": "@database",
-      "USER": "@user",
-      "PASSWORD": "@password"
-    }
+    ]
   }
   
