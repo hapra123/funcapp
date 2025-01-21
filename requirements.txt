@@ -3,3 +3,4 @@ azure.storage.blob
 gradio
 pymssql
 python-dotenv
+gunicorn
