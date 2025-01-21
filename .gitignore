@@ -1,2 +1,6 @@
 venv/
 .env
+templates
+requirements.txt
+.gradio
+__pycache__
