@@ -13,7 +13,7 @@ load_dotenv()
 connection_string = os.getenv("DATABASE_CONNECTION_STRING")
 container_name = "conversations"
 
-# Function to establish a database connection
+# Function to establish a database connection 12
 def get_db_connection():
     try:
         return pymssql.connect(
